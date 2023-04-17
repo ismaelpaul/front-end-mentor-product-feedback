@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Nav from './components/Nav/Nav';
+import SuggestionsPage from './pages/Suggestions/SuggestionsPage';
 
 function App() {
 	return (
 		<Routes>
-			<Route path="/" element={<Nav />}></Route>
+			<Route path="/" element={<SuggestionsPage />}></Route>
 		</Routes>
 	);
 }
