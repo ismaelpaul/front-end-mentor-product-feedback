@@ -3,9 +3,10 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		screens: {
-			mobile: '375px',
+			sm: '375px',
 			tablet: '768px',
-			desktop: '1440px',
+			laptop: '1440px',
+			desktop: '1920px',
 		},
 		colors: {
 			purple: '#AD1FEA',
