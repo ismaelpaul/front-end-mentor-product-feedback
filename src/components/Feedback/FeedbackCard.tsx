@@ -34,24 +34,24 @@ const FeedbackCard = () => {
 									{request.description}
 								</p>
 								<div className="bg-white-smoke w-fit rounded-lg mt-2">
-									<p className="text-blue font-semiBold text-subtitleMobile px-4 py-2">
+									<span className="text-blue font-semiBold text-subtitleMobile px-4 py-2">
 										{request.category.charAt(0).toUpperCase() +
 											request.category.slice(1)}
-									</p>
+									</span>
 								</div>
 							</div>
 							<div className="flex justify-between mt-4">
 								<div className="flex items-center gap-2.5 bg-white-smoke w-fit px-4 py-2 rounded-lg">
 									<ArrowUp />
-									<p className="text-dark-slate-blue text-subtitleMobile font-semiBold tracking-tight">
+									<span className="text-dark-slate-blue text-subtitleMobile font-semiBold tracking-tight">
 										{request.upvotes}
-									</p>
+									</span>
 								</div>
 								<div className="flex items-center gap-2.5">
 									<Comments />
-									<p className="text-dark-slate-blue text-subtitleMobile font-semiBold">
+									<span className="text-dark-slate-blue text-subtitleMobile font-semiBold">
 										{request.comments ? request.comments.length : 0}
-									</p>
+									</span>
 								</div>
 							</div>
 						</div>
