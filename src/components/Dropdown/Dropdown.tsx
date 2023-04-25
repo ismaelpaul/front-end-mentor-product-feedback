@@ -16,6 +16,11 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 	const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const handleOptionClick = (option: Options) => {
+		setSelectedOption(option);
+		setIsOpen(false);
+	};
+
 	return (
 		<div>
 			<div className="flex items-center gap-2 relative">
@@ -44,11 +49,12 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 								<>
 									<li
 										key={index}
-										className="text-light-slate-blue flex items-center px-6 py-3 "
+										className="text-light-slate-blue flex items-center justify-between px-6 py-3 "
+										onClick={() => handleOptionClick(option)}
 									>
 										{option.label}
 										{selectedOption &&
-											selectedOption.value === option.value && <Check />}
+											selectedOption.label === option.label && <Check />}
 									</li>
 								</>
 							);
