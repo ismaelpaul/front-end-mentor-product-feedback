@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAllProductRequests } from '../../utils/api';
-import { InitialState } from '../../interfaces/IInitialState';
+import { getAllProductRequests } from '../../../utils/api';
+import { InitialStateProdRequests } from '../../../interfaces/IInitialState';
 
-const initialState: InitialState = {
+const initialState: InitialStateProdRequests = {
 	productRequests: [],
 	isError: false,
 	isSuccess: false,
