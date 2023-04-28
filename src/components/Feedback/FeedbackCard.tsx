@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/store';
-import { getProductRequests } from '../../redux/features/productRequestsSlice';
+import { getProductRequests } from '../../redux/features/productRequests/productRequestsSlice';
 import Card from '../Card/Card';
 import ArrowUp from '../SVGComponents/ArrowUp';
 import Comments from '../SVGComponents/Comments';
