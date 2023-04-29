@@ -3,10 +3,10 @@ import Nav from '../../components/Nav/Nav';
 
 const SuggestionsPage = () => {
 	return (
-		<>
+		<section>
 			<Nav />
 			<FeedbackList />
-		</>
+		</section>
 	);
 };
 
