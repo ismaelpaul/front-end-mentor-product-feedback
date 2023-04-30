@@ -21,3 +21,13 @@ export const getAllProductRequests = async () => {
 		return error.response.data.message;
 	}
 };
+
+export const getSingleProductRequest = async (id: string) => {
+	try {
+		const response = await productFeedbackApi.get(`/product-requests/${id}`);
+
+		return response.data;
+	} catch (error: any) {
+		return error.response.data.message;
+	}
+};
