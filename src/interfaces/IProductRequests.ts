@@ -1,3 +1,8 @@
+export interface Reply {
+	content: string;
+	replyingTo: string;
+	user: User;
+}
 export interface User {
 	image: string;
 	name: string;
@@ -8,6 +13,7 @@ export interface Comments {
 	id: string;
 	content: string;
 	user: User;
+	replies?: Reply[];
 }
 
 export interface ProductRequests {
