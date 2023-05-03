@@ -10,7 +10,7 @@ const FeedbackEmpty = () => {
 		<section className="bg-white rounded-lg">
 			<article className="flex flex-col items-center justify-center font-jost text-subtitleMobile py-20 px-6">
 				<EmptyFeedbackIllustration />
-				<h1 className="text-dark-slate-blue text-titleEmptyFeedback font-semiBold tracking-tightier mt-10">
+				<h1 className="text-dark-slate-blue text-title18px font-semiBold tracking-tightier mt-10">
 					There is no feedback yet
 				</h1>
 				<p className="text-light-slate-blue text-center mt-3.5 mb-6">
