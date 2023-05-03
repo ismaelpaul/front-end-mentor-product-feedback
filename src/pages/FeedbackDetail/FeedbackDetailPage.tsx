@@ -11,7 +11,6 @@ const FeedbackDetailPage = () => {
 	const singleRequest = useSelector(
 		(state: RootState) => state.productRequests.singleRequest
 	);
-	console.log(singleRequest, '<<<< single');
 
 	return (
 		<div className=" flex  flex-col gap-6 m-6">
