@@ -8,7 +8,7 @@ const NavFeedbackDetail = () => {
 
 	const link = '/';
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between items-center">
 			<GoBackLink link={link} />
 
 			<Button buttonText={buttonText} buttonClass={buttonClass} />
