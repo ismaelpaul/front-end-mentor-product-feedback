@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from '../Dropdown/DropdownSuggestions';
 import { selectIsSidebarOpen } from '../../redux/features/sidebar/sidebarSlice';
 import Sidebar from '../Sidebar/Sidebar';
 
