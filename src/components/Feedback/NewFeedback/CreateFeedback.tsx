@@ -1,9 +1,9 @@
-import Button from '../Button/Button';
-import Card from '../Card/Card';
-import NewFeedback from '../SVGComponents/NewFeedback';
-import Category from './NewFeedback/Category';
-import FeedbackDetail from './NewFeedback/FeedbackDetail';
-import FeedbackTitle from './NewFeedback/FeedbackTitle';
+import Button from '../../Button/Button';
+import Card from '../../Card/Card';
+import NewFeedback from '../../SVGComponents/NewFeedback';
+import Category from './Category';
+import FeedbackDetail from './FeedbackDetail';
+import FeedbackTitle from './FeedbackTitle';
 
 const CreateFeedback = () => {
 	const cardClass = 'bg-white font-jost rounded-lg mt-14';
