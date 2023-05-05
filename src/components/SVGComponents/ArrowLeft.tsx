@@ -1,7 +1,12 @@
-const ArrowLeft = () => {
+interface ArrowLeftProps {
+	className?: string;
+}
+
+const ArrowLeft = ({ className }: ArrowLeftProps) => {
 	return (
 		<svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
 			<path
+				className={className}
 				d="M6 9L2 5l4-4"
 				stroke="#4661E6"
 				strokeWidth="2"
