@@ -3,10 +3,10 @@ import SuggestionsBar from '../SuggestionsBar/SuggestionsBar';
 
 const Nav = () => {
 	return (
-		<div>
+		<header>
 			<Menu />
 			<SuggestionsBar />
-		</div>
+		</header>
 	);
 };
 
