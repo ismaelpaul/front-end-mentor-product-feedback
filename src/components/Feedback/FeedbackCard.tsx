@@ -2,13 +2,18 @@ import Card from '../Card/Card';
 import ArrowUp from '../SVGComponents/ArrowUp';
 import Comments from '../SVGComponents/Comments';
 import { ProductRequests } from '../../interfaces/IProductRequests';
+import { useLocation } from 'react-router';
+import { useCallback } from 'react';
 
 type FeedbackCardPros = {
 	singleRequest: ProductRequests;
 };
 
 const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
-	const repliesCount = () => {
+	const location = useLocation();
+	const { pathname } = location;
+
+	const repliesCount = useCallback(() => {
 		return (
 			singleRequest.comments?.reduce((count, comment) => {
 				if (comment.replies?.length !== undefined) {
@@ -17,11 +22,44 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 				return count;
 			}, 0) || 0
 		);
-	};
+	}, [singleRequest.comments]);
+
 	return (
-		<Card cardClass="bg-white font-jost rounded-lg ">
+		<Card cardClass="bg-white font-jost rounded-lg">
+			<div
+				className={`${
+					pathname === '/roadmap' ? 'h-1.5 w-full rounded-t-lg ' : 'hidden'
+				}${
+					singleRequest.status === 'planned'
+						? 'bg-peachy'
+						: singleRequest.status === 'in-progress'
+						? 'bg-purple'
+						: 'bg-light-blue'
+				} `}
+			></div>
 			<div className=" p-6">
 				<div>
+					<div
+						className={`${
+							pathname === '/roadmap'
+								? 'flex items-center gap-2 text-light-slate-blue text-subtitleMobile mb-4'
+								: 'hidden'
+						}`}
+					>
+						<div
+							className={`${
+								singleRequest.status === 'planned'
+									? 'bg-peachy'
+									: singleRequest.status === 'in-progress'
+									? 'bg-purple'
+									: 'bg-light-blue'
+							} h-2 w-2 rounded-full`}
+						></div>
+						<span>
+							{singleRequest.status.charAt(0).toUpperCase() +
+								singleRequest.status.slice(1)}
+						</span>
+					</div>
 					<h1 className="text-dark-slate-blue text-subtitleMobile font-bold tracking-tight ">
 						{singleRequest.title}
 					</h1>
