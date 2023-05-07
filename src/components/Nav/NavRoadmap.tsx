@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import GoBackLink from '../GoBackLink/GoBackLink';
 
@@ -21,7 +22,9 @@ const NavRoadmap = () => {
 					Roadmap
 				</h1>
 			</div>
-			<Button buttonClass={buttonClass} buttonText={buttonText} />
+			<Link to={'/new-feedback'}>
+				<Button buttonClass={buttonClass} buttonText={buttonText} />
+			</Link>
 		</header>
 	);
 };
