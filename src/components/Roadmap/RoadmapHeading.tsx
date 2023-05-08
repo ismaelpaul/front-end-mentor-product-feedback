@@ -36,7 +36,7 @@ const RoadmapHeading = ({
 						{selectedTab.name + ' ' + `(${inProgressContent.length})`}
 					</h1>
 					<p className="text-light-slate-blue text-subtitleMobile">
-						Currently being developed
+						Features currently being developed
 					</p>
 				</>
 			) : (
