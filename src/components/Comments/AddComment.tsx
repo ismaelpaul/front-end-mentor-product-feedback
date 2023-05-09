@@ -14,12 +14,12 @@ const AddComment = ({ cardClass }: CardClassProps) => {
 		'bg-purple text-white text-subtitleMobile font-semiBold rounded-lg w-32 h-10';
 
 	return (
-		<>
+		<section>
 			<Card cardClass={cardClass}>
-				<div className="p-6">
-					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tight mb-6">
+				<form className="p-6">
+					<h2 className="text-dark-slate-blue text-title18px font-bold tracking-tight mb-6">
 						Add comment
-					</h1>
+					</h2>
 					<textarea
 						maxLength={250}
 						placeholder="Type your comment here"
@@ -30,11 +30,15 @@ const AddComment = ({ cardClass }: CardClassProps) => {
 						<span className="text-light-slate-blue text-subtitleMobile">
 							{250 - characterCount} characteres left
 						</span>
-						<Button buttonText={buttonText} buttonClass={buttonClass} />
+						<Button
+							type="submit"
+							buttonText={buttonText}
+							buttonClass={buttonClass}
+						/>
 					</div>
-				</div>
+				</form>
 			</Card>
-		</>
+		</section>
 	);
 };
 
