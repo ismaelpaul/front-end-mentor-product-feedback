@@ -13,6 +13,9 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 	const location = useLocation();
 	const { pathname } = location;
 
+	const status = singleRequest.status;
+	const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1);
+
 	const repliesCount = useCallback(() => {
 		return (
 			singleRequest.comments?.reduce((count, comment) => {
@@ -30,9 +33,9 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 				className={`${
 					pathname === '/roadmap' ? 'h-1.5 w-full rounded-t-lg ' : 'hidden'
 				}${
-					singleRequest.status === 'planned'
+					status === 'planned'
 						? 'bg-peachy'
-						: singleRequest.status === 'in-progress'
+						: status === 'in-progress'
 						? 'bg-purple'
 						: 'bg-light-blue'
 				} `}
@@ -48,16 +51,17 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 					>
 						<div
 							className={`${
-								singleRequest.status === 'planned'
+								status === 'planned'
 									? 'bg-peachy'
-									: singleRequest.status === 'in-progress'
+									: status === 'in-progress'
 									? 'bg-purple'
 									: 'bg-light-blue'
 							} h-2 w-2 rounded-full`}
 						></div>
 						<span>
-							{singleRequest.status.charAt(0).toUpperCase() +
-								singleRequest.status.slice(1)}
+							{status === 'in-progress'
+								? formattedStatus.replace('-', ' ').replace('p', 'P')
+								: formattedStatus}
 						</span>
 					</div>
 					<h1 className="text-dark-slate-blue text-subtitleMobile font-bold tracking-tight ">
