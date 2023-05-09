@@ -37,9 +37,9 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 				</strong>
 			</span>
 			{isOpen ? (
-				<ArrowUp className="stroke-white" />
+				<ArrowUp className="stroke-white-ghost" />
 			) : (
-				<ArrowDown className="stroke-white" />
+				<ArrowDown className="stroke-white-ghost" />
 			)}
 			{isOpen && (
 				<ul className="bg-white absolute w-48 h-max top-12 divide-y divide-dark-slate-blue/10  rounded-xl shadow-[0_10px_40px_-7px_rgba(55,63,104,0.35)]">
