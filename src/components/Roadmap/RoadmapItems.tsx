@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '../../redux/store';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
 	IN_PROGRESS_REQUESTS,
 	LIVE_REQUESTS,
@@ -12,6 +12,16 @@ const RoadmapItems = () => {
 	const { productRequests } = useSelector(
 		(state: RootState) => state.productRequests
 	);
+
+	const getProductRequests = useCallback(() => {
+		const dataString = localStorage.getItem('productRequests');
+		if (dataString !== null) {
+			const data = JSON.parse(dataString);
+			return data;
+		}
+		return null;
+	}, [productRequests]);
+
 	const inProgress = useSelector(
 		(state: RootState) => state.filteredRequests.inProgress
 	);
@@ -23,6 +33,7 @@ const RoadmapItems = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		getProductRequests();
 		dispatch(IN_PROGRESS_REQUESTS(productRequests));
 		dispatch(PLANNED_REQUESTS(productRequests));
 		dispatch(LIVE_REQUESTS(productRequests));
