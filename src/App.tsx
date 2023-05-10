@@ -3,6 +3,7 @@ import SuggestionsPage from './pages/Suggestions/SuggestionsPage';
 import FeedbackDetailPage from './pages/FeedbackDetail/FeedbackDetailPage';
 import NewFeedbackPage from './pages/NewFeedback/NewFeedbackPage';
 import RoadmapPage from './pages/Roadmap/RoadmapPage';
+import EditFeedbackPage from './pages/EditFeedback/EditFeedbackPage';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				element={<FeedbackDetailPage />}
 			></Route>
 			<Route path="/new-feedback" element={<NewFeedbackPage />}></Route>
+			<Route path="/edit-feedback" element={<EditFeedbackPage />}></Route>
 			<Route path="/roadmap" element={<RoadmapPage />}></Route>
 		</Routes>
 	);
