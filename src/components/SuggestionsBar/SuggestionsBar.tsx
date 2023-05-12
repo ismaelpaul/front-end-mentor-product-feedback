@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/DropdownSuggestions';
 import { selectIsSidebarOpen } from '../../redux/features/sidebar/sidebarSlice';
 import Sidebar from '../Sidebar/Sidebar';
+import { Link } from 'react-router-dom';
 
 const SuggestionsBar = () => {
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
@@ -29,11 +30,13 @@ const SuggestionsBar = () => {
 				<Sidebar />
 			</div>
 
-			<div className="text-white text-subtitleMobile font-jost h-14 bg-dark-gray-blue flex items-center justify-between px-6">
+			<div className="text-white text-subtitleMobile font-jost h-14 bg-dark-grey-blue flex items-center justify-between px-6">
 				<div className="flex gap-2 ">
 					<Dropdown options={options} defaultSelectedOption={options[0]} />
 				</div>
-				<Button buttonText={buttonText} buttonClass={buttonClass} />
+				<Link to={'/new-feedback'}>
+					<Button buttonText={buttonText} buttonClass={buttonClass} />
+				</Link>
 			</div>
 		</div>
 	);
