@@ -1,8 +1,9 @@
-import { ProductRequests } from './IProductRequests';
+import { ProductRequests, SelectedOption } from './IProductRequests';
 
 export interface InitialStateProdRequests {
 	productRequests: [];
 	singleRequest: ProductRequests;
+	selectedOptionForm: SelectedOption;
 	isError: boolean;
 	isSuccess: boolean;
 	isLoading: boolean;
