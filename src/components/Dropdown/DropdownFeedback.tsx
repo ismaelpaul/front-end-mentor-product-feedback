@@ -2,6 +2,11 @@ import { useState } from 'react';
 import ArrowDown from '../SVGComponents/ArrowDown';
 import ArrowUp from '../SVGComponents/ArrowUp';
 import Check from '../SVGComponents/Check';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	SET_SELECTED_OPTION_FORM,
+	selectOptionForm,
+} from '../../redux/features/productRequests/productRequestsSlice';
 
 interface Options {
 	label: string;
@@ -9,18 +14,16 @@ interface Options {
 }
 interface DropdownProps {
 	options: Options[];
-	defaultSelectedOption: Options;
 }
 
-const DropdownFeedback = ({
-	options,
-	defaultSelectedOption,
-}: DropdownProps) => {
-	const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
+const DropdownFeedback = ({ options }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const selectedOption = useSelector(selectOptionForm);
+
+	const dispatch = useDispatch();
 
 	const handleOptionClick = (option: Options) => {
-		setSelectedOption(option);
+		dispatch(SET_SELECTED_OPTION_FORM(option));
 		setIsOpen(false);
 	};
 
@@ -36,9 +39,8 @@ const DropdownFeedback = ({
 				<ul className="bg-white absolute w-full h-max top-14     left-0 divide-y divide-dark-slate-blue/10  rounded-xl shadow-[0_10px_40px_-7px_rgba(55,63,104,0.35)]">
 					{options.map((option, index) => {
 						return (
-							<>
+							<div key={index}>
 								<li
-									key={index}
 									className="text-light-slate-blue flex items-center justify-between px-6 py-3 "
 									onClick={() => handleOptionClick(option)}
 								>
@@ -47,7 +49,7 @@ const DropdownFeedback = ({
 										<Check />
 									)}
 								</li>
-							</>
+							</div>
 						);
 					})}
 				</ul>
