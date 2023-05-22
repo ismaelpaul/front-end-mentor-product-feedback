@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { ProductRequests } from '../interfaces/IProductRequests';
 
 interface AxiosConfig extends AxiosRequestConfig {
 	credentials?: string;
@@ -28,6 +29,22 @@ export const getSingleProductRequest = async (id: string) => {
 
 		return response.data;
 	} catch (error: any) {
+		return error.response.data.message;
+	}
+};
+
+export const addRequest = async (newRequest: ProductRequests) => {
+	console.log(newRequest, '<<<<< new request api');
+
+	try {
+		const response = await productFeedbackApi.post(
+			'/product-requests',
+			newRequest
+		);
+		return response.data;
+	} catch (error: any) {
+		console.log(error);
+
 		return error.response.data.message;
 	}
 };
