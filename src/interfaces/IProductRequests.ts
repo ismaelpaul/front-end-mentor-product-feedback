@@ -1,3 +1,8 @@
+export interface SelectedOption {
+	label: string;
+	value: string;
+}
+
 export interface Reply {
 	content: string;
 	replyingTo: string;
@@ -17,7 +22,7 @@ export interface Comments {
 }
 
 export interface ProductRequests {
-	_id: string;
+	_id?: string;
 	title: string;
 	category: string;
 	upvotes: number;
