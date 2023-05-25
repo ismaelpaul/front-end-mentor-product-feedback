@@ -3,7 +3,8 @@ import { ProductRequests, SelectedOption } from './IProductRequests';
 export interface InitialStateProdRequests {
 	productRequests: [];
 	singleRequest: ProductRequests;
-	selectedOptionForm: SelectedOption;
+	selectedCategory: SelectedOption;
+	selectedStatus: SelectedOption;
 	isError: boolean;
 	isSuccess: boolean;
 	isLoading: boolean;
