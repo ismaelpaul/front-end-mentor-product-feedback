@@ -7,9 +7,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	SET_SELECTED_OPTION_FORM,
+	SET_SELECTED_CATEGORY,
 	addProductRequest,
-	selectOptionForm,
+	selectedCategoryForm,
 } from '../../../redux/features/productRequests/productRequestsSlice';
 import { ProductRequests } from '../../../interfaces/IProductRequests';
 import { AppDispatch } from '../../../redux/store';
@@ -22,7 +22,7 @@ const CreateFeedback = () => {
 	const buttonClass =
 		'text-white-smoke text-subtitleMobile font-semiBold rounded-lg w-full h-10';
 
-	const selectedOption = useSelector(selectOptionForm);
+	const selectedCategory = useSelector(selectedCategoryForm);
 
 	const dispatch = useDispatch<AppDispatch>();
 	const navigate = useNavigate();
@@ -47,8 +47,8 @@ const CreateFeedback = () => {
 	});
 
 	const submitData = async (data: ProductRequests) => {
-		data.category = selectedOption.value;
-		dispatch(SET_SELECTED_OPTION_FORM({ label: 'Feature', value: 'feature' }));
+		data.category = selectedCategory.value;
+		dispatch(SET_SELECTED_CATEGORY({ label: 'Feature', value: 'feature' }));
 		await dispatch(addProductRequest(data));
 		reset();
 		navigate('/');
