@@ -34,8 +34,6 @@ export const getSingleProductRequest = async (id: string) => {
 };
 
 export const addRequest = async (newRequest: ProductRequests) => {
-	console.log(newRequest, '<<<<< new request api');
-
 	try {
 		const response = await productFeedbackApi.post(
 			'/product-requests',
@@ -43,8 +41,16 @@ export const addRequest = async (newRequest: ProductRequests) => {
 		);
 		return response.data;
 	} catch (error: any) {
-		console.log(error);
+		return error.response.data.message;
+	}
+};
 
+export const deleteRequest = async (id: string) => {
+	try {
+		const response = await productFeedbackApi.delete(`/product-requests/${id}`);
+
+		return response.data;
+	} catch (error: any) {
 		return error.response.data.message;
 	}
 };
