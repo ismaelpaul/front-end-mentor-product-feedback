@@ -14,6 +14,7 @@ import {
 import { ProductRequests } from '../../../interfaces/IProductRequests';
 import { AppDispatch } from '../../../redux/store';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const CreateFeedback = () => {
 	const cardClass = 'bg-white font-jost rounded-lg mt-14';
@@ -74,10 +75,12 @@ const CreateFeedback = () => {
 							buttonClass={`bg-purple ${buttonClass}`}
 							buttonText={buttonTextAdd}
 						/>
-						<Button
-							buttonClass={`bg-dark-slate-blue ${buttonClass}`}
-							buttonText={buttonTextCancel}
-						/>
+						<Link to={'/'}>
+							<Button
+								buttonClass={`bg-dark-slate-blue ${buttonClass}`}
+								buttonText={buttonTextCancel}
+							/>
+						</Link>
 					</div>
 				</div>
 			</Card>
