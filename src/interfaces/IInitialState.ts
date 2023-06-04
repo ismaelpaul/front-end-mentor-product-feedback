@@ -1,7 +1,7 @@
 import { ProductRequests, SelectedOption } from './IProductRequests';
 
 export interface InitialStateProdRequests {
-	productRequests: [];
+	productRequests: ProductRequests[];
 	singleRequest: ProductRequests;
 	selectedCategory: SelectedOption;
 	selectedStatus: SelectedOption;
