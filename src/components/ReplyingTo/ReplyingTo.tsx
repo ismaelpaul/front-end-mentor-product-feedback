@@ -10,7 +10,7 @@ const ReplyingTo = ({ comment, reply, index }: ReplyProps) => {
 	return (
 		<div className="flex">
 			<div
-				className={`pl-4 border-l-2 border-light-slate-blue ${
+				className={`pl-4 border-solid border-l-[1.5px] border-light-slate-blue ${
 					index === (comment.replies?.length ?? 0) - 1 ? 'h-6' : 'h-auto'
 				} opacity-10`}
 			></div>
