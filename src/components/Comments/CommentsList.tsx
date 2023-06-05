@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { ProductRequests } from '../../interfaces/IProductRequests';
 import Card from '../Card/Card';
 import ReplyingTo from '../ReplyingTo/ReplyingTo';
@@ -11,7 +12,7 @@ const CommentsList = ({ singleRequest }: FeedbackCardPros) => {
 	const comments = singleRequest.comments ?? [];
 	const cardClass = 'bg-white font-jost rounded-lg ';
 
-	const repliesCount = () => {
+	const repliesCount = useCallback(() => {
 		return (
 			singleRequest.comments?.reduce((count, comment) => {
 				if (comment.replies?.length !== undefined) {
@@ -20,7 +21,7 @@ const CommentsList = ({ singleRequest }: FeedbackCardPros) => {
 				return count;
 			}, 0) || 0
 		);
-	};
+	}, [singleRequest.comments]);
 
 	return (
 		<>
