@@ -34,7 +34,13 @@ const FeedbackList = () => {
 			<section className="flex flex-col gap-4">
 				{productRequests.map((singleRequest: ProductRequests) => {
 					return (
-						<article onClick={() => getSingleRequest(singleRequest._id)}>
+						<article
+							onClick={() => {
+								if (singleRequest._id) {
+									getSingleRequest(singleRequest._id);
+								}
+							}}
+						>
 							<FeedbackCard singleRequest={singleRequest} />
 						</article>
 					);
