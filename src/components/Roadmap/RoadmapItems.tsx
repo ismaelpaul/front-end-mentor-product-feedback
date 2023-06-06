@@ -1,44 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { ProductRequests } from '../../interfaces/IProductRequests';
 
-import { RootState } from '../../redux/store';
-import { useCallback, useEffect } from 'react';
-import {
-	IN_PROGRESS_REQUESTS,
-	LIVE_REQUESTS,
-	PLANNED_REQUESTS,
-} from '../../redux/features/filteredRequests/filteredRequestsSlice';
+type RoadmapItemsProps = {
+	inProgress: ProductRequests[];
+	planned: ProductRequests[];
+	live: ProductRequests[];
+};
 
-const RoadmapItems = () => {
-	const { productRequests } = useSelector(
-		(state: RootState) => state.productRequests
-	);
-
-	const getProductRequests = useCallback(() => {
-		const dataString = localStorage.getItem('productRequests');
-		if (dataString !== null) {
-			const data = JSON.parse(dataString);
-			return data;
-		}
-		return null;
-	}, [productRequests]);
-
-	const inProgress = useSelector(
-		(state: RootState) => state.filteredRequests.inProgress
-	);
-	const planned = useSelector(
-		(state: RootState) => state.filteredRequests.planned
-	);
-	const live = useSelector((state: RootState) => state.filteredRequests.live);
-
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		getProductRequests();
-		dispatch(IN_PROGRESS_REQUESTS(productRequests));
-		dispatch(PLANNED_REQUESTS(productRequests));
-		dispatch(LIVE_REQUESTS(productRequests));
-	}, []);
-
+const RoadmapItems = ({ inProgress, planned, live }: RoadmapItemsProps) => {
 	return (
 		<div className="text-light-slate-blue font-regular font-jost text-roadmap flex flex-col gap-2">
 			<div className="flex items-center gap-4">
