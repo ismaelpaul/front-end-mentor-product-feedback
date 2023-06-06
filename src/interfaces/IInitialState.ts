@@ -5,6 +5,7 @@ export interface InitialStateProdRequests {
 	singleRequest: ProductRequests;
 	selectedCategory: SelectedOption;
 	selectedStatus: SelectedOption;
+	sortingOption: string;
 	isError: boolean;
 	isSuccess: boolean;
 	isLoading: boolean;
