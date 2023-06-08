@@ -6,14 +6,14 @@ import Sidebar from '../Sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 
 const SuggestionsBar = () => {
-	const isSidebarOpen = useSelector(selectIsSidebarOpen);
-
 	const options = [
-		{ label: 'Most Upvotes', value: 'upvotes' },
-		{ label: 'Least Upvotes', value: 'upvotes' },
-		{ label: 'Most Comments', value: 'comments' },
-		{ label: 'Least Comments', value: 'comments' },
+		{ label: 'Most Upvotes', value: 'mostUpvotes' },
+		{ label: 'Least Upvotes', value: 'leastUpvotes' },
+		{ label: 'Most Comments', value: 'mostComments' },
+		{ label: 'Least Comments', value: 'leastComments' },
 	];
+
+	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 
 	const buttonText = '+ Add Feedback';
 	const buttonClass = 'bg-purple font-semiBold rounded-lg w-32 h-10';
