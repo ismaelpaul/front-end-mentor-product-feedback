@@ -2,6 +2,8 @@ import { useState } from 'react';
 import ArrowUp from '../SVGComponents/ArrowUp';
 import ArrowDown from '../SVGComponents/ArrowDown';
 import Check from '../SVGComponents/Check';
+import { useDispatch } from 'react-redux';
+import { SET_SORTING_OPTION } from '../../redux/features/productRequests/productRequestsSlice';
 
 interface Options {
 	label: string;
@@ -16,8 +18,11 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 	const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const dispatch = useDispatch();
+
 	const handleOptionClick = (option: Options) => {
 		setSelectedOption(option);
+		dispatch(SET_SORTING_OPTION(option.value));
 		setIsOpen(false);
 	};
 
