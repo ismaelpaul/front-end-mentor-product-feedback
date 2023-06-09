@@ -13,11 +13,15 @@ const productFeedbackApi = axios.create({
 	credentials: 'include',
 } as AxiosConfig);
 
-export const getAllProductRequests = async (sortingOption: string) => {
+export const getAllProductRequests = async (
+	sortingOption: string,
+	category?: string
+) => {
 	try {
 		const response = await productFeedbackApi.get('/product-requests', {
 			params: {
 				sort: sortingOption,
+				category: category,
 			},
 		});
 
