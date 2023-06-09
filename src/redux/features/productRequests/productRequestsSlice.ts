@@ -20,6 +20,8 @@ const initialState: InitialStateProdRequests = {
 		value: 'feature',
 	},
 	selectedStatus: {} as SelectedOption,
+	sortingOption: 'mostUpvotes',
+	sortingCategory: 'All',
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
@@ -34,9 +36,12 @@ const storeResponseInLocalStorage = (response: ProductRequests[]) => {
 
 export const getProductRequests = createAsyncThunk(
 	'productRequests/getAll',
-	async (_: void, thunkAPI) => {
+	async (
+		{ sortingOption, category }: { sortingOption: string; category?: string },
+		thunkAPI
+	) => {
 		try {
-			const response = await getAllProductRequests();
+			const response = await getAllProductRequests(sortingOption, category);
 			thunkAPI.dispatch(storeResponseInLocalStorage(response));
 			return response;
 		} catch (error: any) {
@@ -104,6 +109,12 @@ const productRequestsSlice = createSlice({
 		SET_SELECTED_STATUS(state, action) {
 			state.selectedStatus = action.payload;
 		},
+		SET_SORTING_OPTION(state, action) {
+			state.sortingOption = action.payload;
+		},
+		SET_SORTING_CATEGORY(state, action) {
+			state.sortingCategory = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -169,10 +180,20 @@ export const { SET_SELECTED_CATEGORY } = productRequestsSlice.actions;
 
 export const { SET_SELECTED_STATUS } = productRequestsSlice.actions;
 
+export const { SET_SORTING_OPTION } = productRequestsSlice.actions;
+
+export const { SET_SORTING_CATEGORY } = productRequestsSlice.actions;
+
 export const selectedCategoryForm = (state: RootState) =>
 	state.productRequests.selectedCategory;
 
 export const selectedStatusForm = (state: RootState) =>
 	state.productRequests.selectedStatus;
+
+export const selectedSortingOption = (state: RootState) =>
+	state.productRequests.sortingOption;
+
+export const selectedSortingCategory = (state: RootState) =>
+	state.productRequests.sortingCategory;
 
 export default productRequestsSlice.reducer;
