@@ -6,6 +6,7 @@ export interface InitialStateProdRequests {
 	selectedCategory: SelectedOption;
 	selectedStatus: SelectedOption;
 	sortingOption: string;
+	sortingCategory: string;
 	isError: boolean;
 	isSuccess: boolean;
 	isLoading: boolean;
