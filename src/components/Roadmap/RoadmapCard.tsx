@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import RoadmapItems from './RoadmapItems';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { AppDispatch, RootState } from '../../redux/store';
 import { useCallback, useEffect } from 'react';
 import {
 	IN_PROGRESS_REQUESTS,
@@ -34,7 +34,7 @@ const RoadmapCard = () => {
 	);
 	const live = useSelector((state: RootState) => state.filteredRequests.live);
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch<AppDispatch>();
 
 	useEffect(() => {
 		const fetchedProductRequests = getProductRequests();
