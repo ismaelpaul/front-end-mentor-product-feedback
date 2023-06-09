@@ -3,6 +3,7 @@ import FeedbackCard from './FeedbackCard';
 import {
 	getProductRequest,
 	getProductRequests,
+	selectedSortingCategory,
 	selectedSortingOption,
 } from '../../redux/features/productRequests/productRequestsSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +22,8 @@ const FeedbackList = () => {
 
 	const sortingOption = useSelector(selectedSortingOption);
 
+	const sortingCategory = useSelector(selectedSortingCategory);
+
 	const getSingleRequest = async (id: string) => {
 		const productRequest = await dispatch(getProductRequest(id));
 
@@ -28,8 +31,8 @@ const FeedbackList = () => {
 	};
 
 	useEffect(() => {
-		dispatch(getProductRequests(sortingOption));
-	}, [sortingOption]);
+		dispatch(getProductRequests({ sortingOption, category: sortingCategory }));
+	}, [sortingOption, sortingCategory]);
 
 	return (
 		<main className="my-8 mx-6">
