@@ -21,9 +21,6 @@ const UserInfo = ({ userInfo }: UserInfoProps) => {
 				</h2>
 				<span className="text-light-slate-blue">{'@' + userInfo.username}</span>
 			</div>
-			<span className="text-blue text-right font-semiBold text-subtitleMobile grow">
-				Reply
-			</span>
 		</div>
 	);
 };
