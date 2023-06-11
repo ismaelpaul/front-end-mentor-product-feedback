@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
+	addComment,
 	addRequest,
 	deleteRequest,
 	getAllProductRequests,
@@ -7,6 +8,7 @@ import {
 } from '../../../utils/api';
 import { InitialStateProdRequests } from '../../../interfaces/IInitialState';
 import {
+	Comments,
 	ProductRequests,
 	SelectedOption,
 } from '../../../interfaces/IProductRequests';
@@ -99,6 +101,24 @@ export const deleteProductRequest = createAsyncThunk(
 	}
 );
 
+export const addNewComment = createAsyncThunk(
+	'comment/add',
+	async (
+		{ id, newComment }: { id: string; newComment: Comments },
+		thunkAPI
+	) => {
+		try {
+			return await addComment(id, newComment);
+		} catch (error: any) {
+			const message =
+				(error.response && error.response.data && error.response.message) ||
+				error.message ||
+				error.toString();
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
 const productRequestsSlice = createSlice({
 	name: 'productRequests',
 	initialState,
@@ -172,7 +192,38 @@ const productRequestsSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
-			});
+			})
+			.addCase(addNewComment.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(
+				addNewComment.fulfilled,
+				(
+					state,
+					action: PayloadAction<{ id: string; newComment: Comments }>
+				) => {
+					const { id, newComment } = action.payload;
+
+					const productRequest = state.productRequests.find(
+						(productRequest) => productRequest._id === id
+					);
+
+					if (productRequest) {
+						const { content, user } = newComment;
+						const comment: Comments = {
+							id: '',
+							content,
+							user,
+							replies: [],
+						};
+
+						if (!productRequest.comments) {
+							productRequest.comments = [];
+						}
+						productRequest.comments.push(comment);
+					}
+				}
+			);
 	},
 });
 
