@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { ProductRequests } from '../interfaces/IProductRequests';
+import { Comments, ProductRequests } from '../interfaces/IProductRequests';
 
 interface AxiosConfig extends AxiosRequestConfig {
 	credentials?: string;
@@ -56,6 +56,19 @@ export const addRequest = async (newRequest: ProductRequests) => {
 export const deleteRequest = async (id: string) => {
 	try {
 		const response = await productFeedbackApi.delete(`/product-requests/${id}`);
+
+		return response.data;
+	} catch (error: any) {
+		return error.response.data.message;
+	}
+};
+
+export const addComment = async (id: string, newComment: Comments) => {
+	try {
+		const response = await productFeedbackApi.patch(
+			`/product-requests/${id}`,
+			newComment
+		);
 
 		return response.data;
 	} catch (error: any) {
