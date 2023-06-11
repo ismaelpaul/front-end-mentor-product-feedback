@@ -1,12 +1,27 @@
+import { Dispatch, SetStateAction } from 'react';
 import { Comments, Reply } from '../../interfaces/IProductRequests';
+import Button from '../Button/Button';
 import UserInfo from '../UserInfo/UserInfo';
+import ReplyComment from '../ReplyComment/ReplyComment';
 
 type ReplyProps = {
 	reply: Reply;
 	index: number;
 	comment: Comments;
+	replyIndex: number;
+	setReplyIndex: Dispatch<SetStateAction<number>>;
 };
-const ReplyingTo = ({ comment, reply, index }: ReplyProps) => {
+const ReplyingTo = ({
+	comment,
+	reply,
+	index,
+	replyIndex,
+	setReplyIndex,
+}: ReplyProps) => {
+	const buttonClass =
+		'text-blue text-right font-semiBold text-subtitleMobile basis-0 ml-auto';
+	const buttonText = 'Reply';
+
 	return (
 		<div className="flex">
 			<div
@@ -15,13 +30,23 @@ const ReplyingTo = ({ comment, reply, index }: ReplyProps) => {
 				} opacity-10`}
 			></div>
 			<div className="flex flex-col">
-				<UserInfo userInfo={reply.user} />
+				<div className="flex">
+					<UserInfo userInfo={reply.user} />
+					<Button
+						buttonClass={buttonClass}
+						buttonText={buttonText}
+						onClick={() => {
+							setReplyIndex(index);
+						}}
+					/>
+				</div>
 				<p className="text-light-slate-blue text-subtitleMobile mt-4 mb-6">
 					<span className="text-purple font-bold">
 						{'@' + reply.replyingTo + ' '}
 					</span>
 					{reply.content}
 				</p>
+				{index === replyIndex && <ReplyComment />}
 			</div>
 		</div>
 	);
