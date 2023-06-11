@@ -15,7 +15,7 @@ export interface User {
 }
 
 export interface Comments {
-	id: string;
+	id?: string;
 	content: string;
 	user: User;
 	replies?: Reply[];
