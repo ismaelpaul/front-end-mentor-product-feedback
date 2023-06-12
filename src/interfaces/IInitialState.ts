@@ -21,4 +21,5 @@ export interface InitialStateFilteredRequests {
 	inProgress: ProductRequests[];
 	planned: ProductRequests[];
 	live: ProductRequests[];
+	suggestion: ProductRequests[];
 }
