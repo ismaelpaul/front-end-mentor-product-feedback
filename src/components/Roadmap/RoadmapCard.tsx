@@ -8,10 +8,11 @@ import {
 	IN_PROGRESS_REQUESTS,
 	LIVE_REQUESTS,
 	PLANNED_REQUESTS,
+	SUGGESTION_REQUESTS,
 } from '../../redux/features/filteredRequests/filteredRequestsSlice';
 
 const RoadmapCard = () => {
-	const cardClass = 'bg-white w-56 rounded-lg p-6';
+	const cardClass = 'bg-white w-56 h-44 rounded-lg p-6';
 
 	const { productRequests } = useSelector(
 		(state: RootState) => state.productRequests
@@ -42,11 +43,12 @@ const RoadmapCard = () => {
 			dispatch(IN_PROGRESS_REQUESTS(fetchedProductRequests));
 			dispatch(PLANNED_REQUESTS(fetchedProductRequests));
 			dispatch(LIVE_REQUESTS(fetchedProductRequests));
+			dispatch(SUGGESTION_REQUESTS(fetchedProductRequests));
 		}
 	}, []);
 
 	return (
-		<div className="px-6">
+		<div className="px-6 tablet:px-0">
 			<Card cardClass={cardClass}>
 				<div className="flex justify-between font-jost mb-6">
 					<h1 className=" text-dark-slate-blue text-title18px font-bold tracking-tightier ">
