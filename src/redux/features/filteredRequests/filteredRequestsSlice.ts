@@ -6,6 +6,7 @@ const initialState: InitialStateFilteredRequests = {
 	inProgress: [],
 	planned: [],
 	live: [],
+	suggestion: [],
 };
 const filteredRequestsSlice = createSlice({
 	name: 'filteredRequests',
@@ -47,11 +48,27 @@ const filteredRequestsSlice = createSlice({
 			);
 			state.live = liveFiltered;
 		},
+		SUGGESTION_REQUESTS(state, action) {
+			const productRequests = action.payload;
+
+			const suggestionFiltered: ProductRequests[] = productRequests.filter(
+				(request: ProductRequests) => {
+					if (request.status === 'suggestion') {
+						return request;
+					}
+				}
+			);
+			state.suggestion = suggestionFiltered;
+		},
 	},
 });
 
-export const { IN_PROGRESS_REQUESTS, PLANNED_REQUESTS, LIVE_REQUESTS } =
-	filteredRequestsSlice.actions;
+export const {
+	IN_PROGRESS_REQUESTS,
+	PLANNED_REQUESTS,
+	LIVE_REQUESTS,
+	SUGGESTION_REQUESTS,
+} = filteredRequestsSlice.actions;
 
 export const selectInProgressFilteredRequests = (
 	state: InitialStateFilteredRequests
@@ -62,5 +79,8 @@ export const selectPlannedRequests = (state: InitialStateFilteredRequests) =>
 
 export const selectLiveRequests = (state: InitialStateFilteredRequests) =>
 	state.live;
+
+export const selectSuggestionRequests = (state: InitialStateFilteredRequests) =>
+	state.suggestion;
 
 export default filteredRequestsSlice.reducer;
