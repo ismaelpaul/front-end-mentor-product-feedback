@@ -6,10 +6,17 @@ import { selectIsSidebarOpen } from '../../redux/features/sidebar/sidebarSlice';
 const SuggestionsPage = () => {
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 	return (
-		<section className={isSidebarOpen ? 'fixed' : ''}>
-			<Nav />
+		<>
+			<header
+				className={`mt-0 mx-0 ${
+					isSidebarOpen ? 'fixed' : ''
+				} tablet:mt-14 tablet:mx-10`}
+			>
+				<Nav />
+			</header>
+
 			<FeedbackList />
-		</section>
+		</>
 	);
 };
 
