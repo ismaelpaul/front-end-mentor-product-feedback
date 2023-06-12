@@ -17,7 +17,7 @@ const CategoriesCard = () => {
 	};
 
 	return (
-		<div className="p-6">
+		<div className="p-6 tablet:p-0">
 			<Card cardClass={cardClass}>
 				<CategoriesItems
 					categories={categories}
