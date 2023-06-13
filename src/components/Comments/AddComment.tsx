@@ -69,14 +69,12 @@ const AddComment = ({ cardClass }: CardClassProps) => {
 			addNewComment({ id: singleRequest._id ?? '', newComment: newComment })
 		);
 
-		// Call the API to add the new comment using the `newComment` object
-
 		reset();
 	};
 
 	const onSubmit = handleSubmit(submitData);
 	return (
-		<section>
+		<section className="m-6">
 			<Card cardClass={cardClass}>
 				<form className="p-6" onSubmit={onSubmit}>
 					<h2 className="text-dark-slate-blue text-title18px font-bold tracking-tight mb-6">
@@ -86,14 +84,14 @@ const AddComment = ({ cardClass }: CardClassProps) => {
 						{...register('content')}
 						maxLength={250}
 						placeholder="Type your comment here"
-						className="bg-white-ghost text-regent-grey text-subtitleMobile rounded-md resize-none p-6 w-full h-32 outline-none focus:outline-blue outline-1"
+						className="bg-white-ghost text-regent-grey text-subtitleMobile rounded-md resize-none p-6 w-full h-32 outline-none focus:outline-blue outline-1 tablet:text-text15px"
 						onChange={(e) => setcharacterCount(e.target.value.length)}
 					></textarea>
 					{errors.content && (
 						<span className={errorClass}>{errors.content.message}</span>
 					)}
 					<div className="flex items-center justify-between mt-4">
-						<span className="text-light-slate-blue text-subtitleMobile">
+						<span className="text-light-slate-blue text-subtitleMobile tablet:text-text15px">
 							{250 - characterCount} characteres left
 						</span>
 						<Button
