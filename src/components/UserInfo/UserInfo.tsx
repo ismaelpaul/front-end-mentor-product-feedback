@@ -8,7 +8,7 @@ type UserInfoProps = {
 
 const UserInfo = ({ userInfo }: UserInfoProps) => {
 	return (
-		<div className="flex items-center gap-4">
+		<div className="flex items-center gap-4 tablet:gap-8">
 			<img
 				src={userInfo.image}
 				alt={`Profile image of ${userInfo.name} or ${userInfo.username}`}
