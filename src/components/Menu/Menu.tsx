@@ -20,8 +20,8 @@ const Menu = () => {
 	};
 
 	return (
-		<div className="flex items-center tablet:mb-10  relative">
-			<div className="w-full flex justify-between items-center p-6 absolute tablet:w-fit tablet:bottom-1">
+		<div className="flex items-center tablet:mb-10">
+			<div className="w-full flex justify-between items-center p-6 absolute tablet:w-fit tablet:top-[8.5rem]">
 				<div className=" text-white font-jost">
 					<h1 className="text-titleMobile font-semiBold tracking-tight tablet:text-title20px">
 						Frontend Mentor
