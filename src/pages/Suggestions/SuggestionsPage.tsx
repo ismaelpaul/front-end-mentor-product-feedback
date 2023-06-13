@@ -9,7 +9,7 @@ const SuggestionsPage = () => {
 		<>
 			<header
 				className={`mt-0 mx-0 ${
-					isSidebarOpen ? 'fixed' : ''
+					isSidebarOpen ? 'fixed top-0 contents' : ''
 				} tablet:mt-14 tablet:mx-10`}
 			>
 				<Nav />
