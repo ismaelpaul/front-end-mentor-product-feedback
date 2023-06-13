@@ -13,14 +13,17 @@ const FeedbackDetailPage = () => {
 	);
 
 	return (
-		<main className=" flex  flex-col gap-6 m-6">
+		<>
 			<NavFeedbackDetail />
-			<FeedbackCard singleRequest={singleRequest} />
+			<section className="m-6">
+				<FeedbackCard singleRequest={singleRequest} />
+			</section>
+
 			{singleRequest.comments?.length != 0 && (
 				<CommentsList singleRequest={singleRequest} />
 			)}
 			<AddComment cardClass={cardClass} />
-		</main>
+		</>
 	);
 };
 
