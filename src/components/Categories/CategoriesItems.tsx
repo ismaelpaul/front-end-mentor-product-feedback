@@ -12,7 +12,7 @@ const CategoriesItems = ({
 	const selectedCategory = useSelector(selectedSortingCategory);
 
 	return (
-		<div className="flex flex-wrap gap-2">
+		<div className="flex flex-wrap gap-2 tablet:gap-y-3.5">
 			{categories.map((category, index) => {
 				return (
 					<ul
