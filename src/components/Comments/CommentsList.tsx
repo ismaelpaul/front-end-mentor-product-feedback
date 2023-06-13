@@ -33,9 +33,9 @@ const CommentsList = ({ singleRequest }: FeedbackCardPros) => {
 	}, [singleRequest.comments]);
 
 	return (
-		<>
+		<main className="m-6">
 			<Card cardClass={cardClass}>
-				<div className="p-6">
+				<div className="p-6 tablet:px-8">
 					<h1 className="text-dark-slate-blue text-title18px font-bold mb-6">
 						{comments.length + repliesCount() + ' ' + 'Comments'}
 					</h1>
@@ -43,19 +43,28 @@ const CommentsList = ({ singleRequest }: FeedbackCardPros) => {
 						{comments.map((comment, index) => {
 							return (
 								<>
-									<div key={index} className="flex">
-										<UserInfo userInfo={comment.user} />
-										<Button
-											buttonClass={buttonClass}
-											buttonText={buttonText}
-											onClick={() => {
-												setCommentIndex(index);
-											}}
-										/>
+									<div className="flex flex-col tablet:gap-4">
+										<div key={index} className="flex">
+											<UserInfo userInfo={comment.user} />
+											<Button
+												buttonClass={buttonClass}
+												buttonText={buttonText}
+												onClick={() => {
+													setCommentIndex(index);
+												}}
+											/>
+										</div>
+										<div className="tablet:flex tablet:ml-4">
+											<div
+												className={`border-solid border-l-[1.5px] border-light-slate-blue ${
+													index === comments.length - 1 ? 'h-auto' : 'hidden'
+												} opacity-10 `}
+											></div>
+											<p className="text-light-slate-blue text-subtitleMobile mb-6 mt-4 tablet:ml-[3.5rem] tablet:text-text15px tablet:mt-0">
+												{comment.content}
+											</p>
+										</div>
 									</div>
-									<p className="text-light-slate-blue text-subtitleMobile mt-4 mb-6">
-										{comment.content}
-									</p>
 									{index === commentIndex && <ReplyComment />}
 									{index === comments.length - 1 ? (
 										<></>
@@ -81,7 +90,7 @@ const CommentsList = ({ singleRequest }: FeedbackCardPros) => {
 					</>
 				</div>
 			</Card>
-		</>
+		</main>
 	);
 };
 
