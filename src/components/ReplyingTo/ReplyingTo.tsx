@@ -23,13 +23,13 @@ const ReplyingTo = ({
 	const buttonText = 'Reply';
 
 	return (
-		<div className="flex">
+		<div className="flex tablet:ml-4 tablet:gap-2">
 			<div
 				className={`pl-4 border-solid border-l-[1.5px] border-light-slate-blue ${
 					index === (comment.replies?.length ?? 0) - 1 ? 'h-6' : 'h-auto'
 				} opacity-10`}
 			></div>
-			<div className="flex flex-col">
+			<div className="flex flex-col tablet:gap-2.5">
 				<div className="flex">
 					<UserInfo userInfo={reply.user} />
 					<Button
@@ -40,7 +40,7 @@ const ReplyingTo = ({
 						}}
 					/>
 				</div>
-				<p className="text-light-slate-blue text-subtitleMobile mt-4 mb-6">
+				<p className="text-light-slate-blue text-subtitleMobile mb-6 tablet:ml-[4.5rem] tablet:text-text15px">
 					<span className="text-purple font-bold">
 						{'@' + reply.replyingTo + ' '}
 					</span>
