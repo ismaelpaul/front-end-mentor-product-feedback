@@ -4,13 +4,15 @@ import GoBackLink from '../../components/GoBackLink/GoBackLink';
 const NewFeedbackPage = () => {
 	const link = '/';
 	const goBackClass =
-		'text-light-slate-blue text-subtitleMobile font-jost font-bold';
+		'text-light-slate-blue text-subtitleMobile font-jost font-bold tablet:text-text14px';
 
 	return (
-		<div className="gap-6 m-6">
-			<GoBackLink goBackClass={goBackClass} link={link} />
+		<>
+			<nav className="mt-8 mx-6 tablet:mt-14 tablet:mx-[7.125rem]">
+				<GoBackLink goBackClass={goBackClass} link={link} />
+			</nav>
 			<CreateFeedback />
-		</div>
+		</>
 	);
 };
 
