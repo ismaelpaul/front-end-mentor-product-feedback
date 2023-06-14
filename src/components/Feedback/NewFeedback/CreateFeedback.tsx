@@ -21,7 +21,7 @@ const CreateFeedback = () => {
 	const buttonTextAdd = 'Add Feedback';
 	const buttonTextCancel = 'Cancel';
 	const buttonClass =
-		'text-white-smoke text-subtitleMobile font-semiBold rounded-lg w-full h-10';
+		'text-white-smoke text-subtitleMobile py-2.5 font-semiBold rounded-lg w-full tablet:text-text14px  tablet:w-fit tablet:px-4 tablet:py-3';
 
 	const selectedCategory = useSelector(selectedCategoryForm);
 
@@ -43,7 +43,7 @@ const CreateFeedback = () => {
 			category: '',
 			description: '',
 			upvotes: 0,
-			status: 'planned',
+			status: 'suggestion',
 		},
 	});
 
@@ -58,17 +58,17 @@ const CreateFeedback = () => {
 	const onSubmit = handleSubmit(submitData);
 
 	return (
-		<main>
+		<main className="mx-6 tablet:mx-[7.125rem] tablet:mb-10">
 			<Card cardClass={cardClass}>
 				<div className="p-6 pt-10">
-					<div className="absolute top-20 left-14">
+					<div className="absolute top-[5.5rem] left-14 tablet:top-28 tablet:left-[8.5rem]">
 						<NewFeedback />
 					</div>
-					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier">
+					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier tablet:text-title24px">
 						Create new Feedback
 					</h1>
 					<FeedbackForm register={register} onSubmit={onSubmit} />
-					<div className="flex flex-col gap-4 mt-10">
+					<div className="flex flex-col gap-4 mt-10 tablet:flex-row-reverse">
 						<Button
 							type={'submit'}
 							form={'feedback-form'}
