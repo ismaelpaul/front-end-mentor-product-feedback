@@ -4,7 +4,7 @@ import GoBackLink from '../GoBackLink/GoBackLink';
 
 const NavFeedbackDetail = () => {
 	const goBackClass =
-		'text-light-slate-blue text-subtitleMobile font-jost font-bold';
+		'text-light-slate-blue text-subtitleMobile font-jost font-bold tablet:text-text14px';
 	const arrowClass = '';
 	const buttonText = 'Edit Feedback';
 	const buttonClass =
