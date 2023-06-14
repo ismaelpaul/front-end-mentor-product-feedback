@@ -35,12 +35,13 @@ const FeedbackList = () => {
 	}, [sortingOption, sortingCategory]);
 
 	return (
-		<main className="my-8 mx-6">
+		<main className="my-8 mx-6 tablet:mx-10">
 			{productRequests.length === 0 && <FeedbackEmpty />}
 			<section className="flex flex-col gap-4">
 				{productRequests.map((singleRequest: ProductRequests) => {
 					return (
 						<article
+							key={singleRequest._id}
 							onClick={() => {
 								if (singleRequest._id) {
 									getSingleRequest(singleRequest._id);
