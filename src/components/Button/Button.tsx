@@ -1,9 +1,12 @@
+import { ReactNode } from 'react';
+
 interface ButtonProps {
-	buttonText: string;
+	buttonText?: string;
 	buttonClass: string;
 	type?: 'button' | 'submit';
 	form?: string;
 	onClick?: () => void;
+	children?: ReactNode;
 }
 const Button = ({
 	buttonText,
@@ -11,6 +14,7 @@ const Button = ({
 	type = 'button',
 	form,
 	onClick,
+	children,
 }: ButtonProps) => {
 	return (
 		<button
@@ -20,6 +24,7 @@ const Button = ({
 			form={form}
 			onClick={onClick}
 		>
+			{children}
 			{buttonText}
 		</button>
 	);
