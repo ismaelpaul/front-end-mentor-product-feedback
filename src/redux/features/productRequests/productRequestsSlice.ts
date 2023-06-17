@@ -5,6 +5,7 @@ import {
 	deleteRequest,
 	getAllProductRequests,
 	getSingleProductRequest,
+	updateUpvotes,
 } from '../../../utils/api';
 import { InitialStateProdRequests } from '../../../interfaces/IInitialState';
 import {
@@ -119,6 +120,21 @@ export const addNewComment = createAsyncThunk(
 	}
 );
 
+export const updateRequestUpvotes = createAsyncThunk(
+	'upvotes/update',
+	async ({ id, vote }: { id: string; vote: number }, thunkAPI) => {
+		try {
+			return await updateUpvotes(id, vote);
+		} catch (error: any) {
+			const message =
+				(error.response && error.response.data && error.response.message) ||
+				error.message ||
+				error.toString();
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
 const productRequestsSlice = createSlice({
 	name: 'productRequests',
 	initialState,
@@ -223,7 +239,29 @@ const productRequestsSlice = createSlice({
 						productRequest.comments.push(comment);
 					}
 				}
-			);
+			)
+			.addCase(updateRequestUpvotes.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(updateRequestUpvotes.fulfilled, (state, action) => {
+				const { id, vote } = action.meta.arg;
+				const productRequest = state.productRequests.find(
+					(request) => request._id === id
+				);
+
+				if (productRequest) {
+					if (vote === 1) {
+						productRequest.upvotes += 1; // Increase upvotes by 1
+					} else if (vote === -1) {
+						productRequest.upvotes -= 1; // Decrease upvotes by 1
+					}
+				}
+			})
+			.addCase(updateRequestUpvotes.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
+			});
 	},
 });
 
