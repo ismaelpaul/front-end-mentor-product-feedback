@@ -66,8 +66,22 @@ export const deleteRequest = async (id: string) => {
 export const addComment = async (id: string, newComment: Comments) => {
 	try {
 		const response = await productFeedbackApi.patch(
-			`/product-requests/${id}`,
+			`/product-requests/${id}/comments`,
 			newComment
+		);
+
+		return response.data;
+	} catch (error: any) {
+		return error.response.data.message;
+	}
+};
+
+export const updateUpvotes = async (id: string, vote: number) => {
+	const updateValue = { upvotes: vote };
+	try {
+		const response = await productFeedbackApi.patch(
+			`/product-requests/${id}/upvotes`,
+			updateValue
 		);
 
 		return response.data;
