@@ -5,6 +5,7 @@ import ArrowUp from '../SVGComponents/ArrowUp';
 import { updateRequestUpvotes } from '../../redux/features/productRequests/productRequestsSlice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
+import { useLocation } from 'react-router';
 
 type UpvotesProps = {
 	singleRequest: ProductRequests;
@@ -14,7 +15,10 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 	const [hasVoted, setHasVoted] = useState(false);
 
 	const buttonClass =
-		'flex items-center gap-2.5 w-fit px-4 py-2 rounded-lg tablet:flex-col tablet:px-2';
+		'flex items-center gap-2.5 w-fit px-4 py-2 rounded-lg tablet:px-2';
+
+	const location = useLocation();
+	const { pathname } = location;
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -49,7 +53,7 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 			<Button
 				buttonClass={`${buttonClass} ${
 					hasVoted ? 'bg-blue ' : 'bg-white-smoke'
-				}`}
+				} tablet:${pathname === '/roadmap' ? 'flex-row' : 'flex-col'}`}
 				onClick={handleUpvoteClick}
 			>
 				<ArrowUp hasVoted={hasVoted} />
