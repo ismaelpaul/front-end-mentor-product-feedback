@@ -11,7 +11,7 @@ const NavRoadmap = () => {
 		'bg-purple text-white-ghost text-subtitleMobile font-semiBold rounded-lg w-32 h-10';
 
 	return (
-		<header className="bg-dark-grey-blue flex justify-between items-center p-6  h-24">
+		<header className="bg-dark-grey-blue flex justify-between items-center p-6  h-24 tablet:mt-14 tablet:mx-[2.438rem] tablet:rounded-lg">
 			<div className="flex flex-col gap-1">
 				<GoBackLink
 					goBackClass={goBackClass}
