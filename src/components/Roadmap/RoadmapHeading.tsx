@@ -20,7 +20,7 @@ const RoadmapHeading = ({
 	liveContent,
 }: RoadmapHeadingProps) => {
 	return (
-		<div className="font-jost mt-5 px-6">
+		<div className="font-jost mt-5 px-6 mb-6">
 			{selectedTab.name === 'Planned' ? (
 				<>
 					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier mb-1">
