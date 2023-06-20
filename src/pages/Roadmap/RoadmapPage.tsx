@@ -6,6 +6,9 @@ import { ProductRequests } from '../../interfaces/IProductRequests';
 import RoadmapHeading from '../../components/Roadmap/RoadmapHeading';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import Planned from '../../components/Roadmap/Planned/Planned';
+import InProgress from '../../components/Roadmap/InProgress/InProgress';
+import Live from '../../components/Roadmap/Live/Live';
 
 const RoadmapPage = () => {
 	const [selectedTab, setSelectedTab] = useState({
@@ -31,21 +34,31 @@ const RoadmapPage = () => {
 	return (
 		<>
 			<NavRoadmap />
-			<Tab selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-			<RoadmapHeading
-				selectedTab={selectedTab}
-				inProgressContent={inProgressContent}
-				plannedContent={plannedContent}
-				liveContent={liveContent}
-			/>
-
-			{productRequests.map((request: ProductRequests) => {
-				return request.status === selectedTab.name.toLowerCase() ? (
-					<main key={request._id} className="my-6 mx-6 flex flex-col gap-4">
-						<FeedbackCard singleRequest={request} />
-					</main>
-				) : null;
-			})}
+			<div className="tablet:hidden">
+				<Tab selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+			</div>
+			<div className="tablet:hidden">
+				<RoadmapHeading
+					selectedTab={selectedTab}
+					inProgressContent={inProgressContent}
+					plannedContent={plannedContent}
+					liveContent={liveContent}
+				/>
+			</div>
+			<main className="mx-6 tablet:hidden">
+				{productRequests.map((request: ProductRequests) => {
+					return request.status === selectedTab.name.toLowerCase() ? (
+						<article key={request._id} className="mb-4 tablet:my-0">
+							<FeedbackCard singleRequest={request} />
+						</article>
+					) : null;
+				})}
+			</main>
+			<div className="hidden tablet:flex tablet:gap-2.5 tablet:mx-[2.438rem]">
+				<Planned />
+				<InProgress />
+				<Live />
+			</div>
 		</>
 	);
 };
