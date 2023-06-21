@@ -40,8 +40,16 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 						: 'bg-light-blue'
 				} `}
 			></div>
-			<div className="p-6  tablet:flex tablet:gap-10">
-				<div className="hidden tablet:block">
+			<div
+				className={`p-6  tablet:flex tablet:gap-10 tablet:${
+					pathname !== '/roadmap' ? 'p-8' : 'p-5'
+				}`}
+			>
+				<div
+					className={`hidden tablet:block tablet:${
+						pathname === '/roadmap' ? 'hidden' : ''
+					}`}
+				>
 					<Upvotes singleRequest={singleRequest} />
 				</div>
 				<div>
@@ -70,7 +78,11 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 					<h1 className="text-dark-slate-blue text-subtitleMobile font-bold tracking-tight ">
 						{singleRequest.title}
 					</h1>
-					<p className="text-light-slate-blue text-subtitleMobile font-regular mt-2">
+					<p
+						className={`text-light-slate-blue text-subtitleMobile font-regular mt-2 ${
+							pathname === '/roadmap' ? 'mb-6' : ''
+						}`}
+					>
 						{singleRequest.description}
 					</p>
 					<div className="bg-white-smoke w-fit rounded-lg mt-2 px-4 py-1">
@@ -79,8 +91,23 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 								singleRequest.category.slice(1)}
 						</span>
 					</div>
+					<div
+						className={`hidden tablet:flex tablet:${
+							pathname !== '/roadmap' ? 'hidden' : 'tablet:flex'
+						} tablet:mt-4`}
+					>
+						<Upvotes singleRequest={singleRequest} />
+						<CommentCount
+							singleRequest={singleRequest}
+							repliesCount={repliesCount}
+						/>
+					</div>
 				</div>
-				<div className="hidden tablet:block tablet:my-auto grow">
+				<div
+					className={`hidden tablet:block tablet:my-auto grow tablet:${
+						pathname === '/roadmap' ? 'hidden' : ''
+					}`}
+				>
 					<CommentCount
 						singleRequest={singleRequest}
 						repliesCount={repliesCount}
