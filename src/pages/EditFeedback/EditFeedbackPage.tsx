@@ -10,13 +10,15 @@ const EditFeedbackPage = () => {
 
 	const link = `/product-requests/${singleRequest._id}`;
 	const goBackClass =
-		'text-light-slate-blue text-subtitleMobile font-jost font-bold';
+		'text-light-slate-blue text-subtitleMobile font-jost font-bold tablet:text-text14px';
 
 	return (
-		<div className="gap-6 m-6 mt-8">
-			<GoBackLink link={link} goBackClass={goBackClass} />
+		<>
+			<nav className="mt-8 mx-6 tablet:mt-14 tablet:mx-[7.125rem]">
+				<GoBackLink link={link} goBackClass={goBackClass} />
+			</nav>
 			<EditFeedback />
-		</div>
+		</>
 	);
 };
 
