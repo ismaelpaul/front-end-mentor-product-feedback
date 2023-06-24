@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Button from '../Button/Button';
 import Card from '../Card/Card';
 import { z } from 'zod';
@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNewComment } from '../../redux/features/productRequests/productRequestsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
 
-type CardClassProps = {
+type AddCommentsProps = {
 	cardClass: string;
+	setComments: Dispatch<SetStateAction<Comments[]>>;
 };
 
-const AddComment = ({ cardClass }: CardClassProps) => {
+const AddComment = ({ cardClass, setComments }: AddCommentsProps) => {
 	const [characterCount, setcharacterCount] = useState(0);
 
 	const buttonText = 'Post Comment';
@@ -68,6 +69,8 @@ const AddComment = ({ cardClass }: CardClassProps) => {
 		await dispatch(
 			addNewComment({ id: singleRequest._id ?? '', newComment: newComment })
 		);
+
+		setComments((prevComments: Comments[]) => [...prevComments, newComment]);
 
 		reset();
 	};
