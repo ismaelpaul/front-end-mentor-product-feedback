@@ -4,13 +4,19 @@ import NavFeedbackDetail from '../../components/Nav/NavFeedbackDetail';
 import { RootState } from '../../redux/store';
 import CommentsList from '../../components/Comments/CommentsList';
 import AddComment from '../../components/Comments/AddComment';
+import { useState } from 'react';
+import { Comments } from '../../interfaces/IProductRequests';
 
 const FeedbackDetailPage = () => {
-	const cardClass = 'bg-white font-jost rounded-lg ';
-
 	const singleRequest = useSelector(
 		(state: RootState) => state.productRequests.singleRequest
 	);
+
+	const [comments, setComments] = useState<Comments[]>(
+		singleRequest.comments || []
+	);
+
+	const cardClass = 'bg-white font-jost rounded-lg ';
 
 	return (
 		<>
@@ -20,9 +26,13 @@ const FeedbackDetailPage = () => {
 			</section>
 
 			{singleRequest.comments?.length != 0 && (
-				<CommentsList singleRequest={singleRequest} />
+				<CommentsList
+					key={singleRequest.comments?.length}
+					singleRequest={singleRequest}
+					comments={comments}
+				/>
 			)}
-			<AddComment cardClass={cardClass} />
+			<AddComment cardClass={cardClass} setComments={setComments} />
 		</>
 	);
 };
