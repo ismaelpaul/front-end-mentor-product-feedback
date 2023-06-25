@@ -15,6 +15,9 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 
 	const status = singleRequest.status;
 	const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1);
+	const category = singleRequest.category;
+	const formattedCategory =
+		category.charAt(0).toUpperCase() + category.slice(1);
 
 	const repliesCount = useCallback(() => {
 		return (
@@ -87,8 +90,10 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 					</p>
 					<div className="bg-white-smoke w-fit rounded-lg mt-2 px-4 py-1">
 						<span className="text-blue font-semiBold text-subtitleMobile">
-							{singleRequest.category.charAt(0).toUpperCase() +
-								singleRequest.category.slice(1)}
+							{singleRequest.category === 'ux' ||
+							singleRequest.category === 'ui'
+								? singleRequest.category.toUpperCase()
+								: formattedCategory}
 						</span>
 					</div>
 					<div
