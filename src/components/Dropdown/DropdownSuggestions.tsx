@@ -36,8 +36,8 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 				}
 				onClick={() => setIsOpen(!isOpen)}
 			>
-				<p>Sort by :</p>{' '}
-				<strong>
+				<p className="tablet:text-text14px">Sort by :</p>{' '}
+				<strong className="tablet:text-text14px">
 					{selectedOption ? selectedOption.label : 'Select an option'}
 				</strong>
 			</span>
