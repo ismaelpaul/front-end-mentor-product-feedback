@@ -53,6 +53,21 @@ export const addRequest = async (newRequest: ProductRequests) => {
 	}
 };
 
+export const updateRequest = async (
+	id: string,
+	updatedRequest: ProductRequests
+) => {
+	try {
+		const response = await productFeedbackApi.patch(
+			`/product-requests/${id}`,
+			updatedRequest
+		);
+		return response.data;
+	} catch (error: any) {
+		return error.response.data.message;
+	}
+};
+
 export const deleteRequest = async (id: string) => {
 	try {
 		const response = await productFeedbackApi.delete(`/product-requests/${id}`);
