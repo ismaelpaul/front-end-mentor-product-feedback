@@ -53,7 +53,7 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 							<>
 								<li
 									key={index}
-									className="text-light-slate-blue flex items-center justify-between px-6 py-3 "
+									className="text-light-slate-blue flex items-center justify-between px-6 py-3 hover:text-purple "
 									onClick={() => handleOptionClick(option)}
 								>
 									{option.label}

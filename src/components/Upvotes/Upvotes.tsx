@@ -15,7 +15,7 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 	const [hasVoted, setHasVoted] = useState(false);
 
 	const buttonClass =
-		'flex items-center gap-2.5 px-4 py-2 rounded-lg tablet:px-2';
+		'flex items-center gap-2.5 px-4 py-2 rounded-lg tablet:px-2 hover:bg-lavender-blue';
 
 	const location = useLocation();
 	const { pathname } = location;

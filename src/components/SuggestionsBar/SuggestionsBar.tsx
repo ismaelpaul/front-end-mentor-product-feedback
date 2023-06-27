@@ -19,7 +19,7 @@ const SuggestionsBar = () => {
 
 	const buttonText = '+ Add Feedback';
 	const buttonClass =
-		'bg-purple font-semiBold rounded-lg w-32 h-10 tablet:h-11';
+		'bg-purple font-semiBold rounded-lg w-32 h-10 tablet:h-11 hover:bg-heliotrope';
 
 	const suggestions = useSelector(
 		(state: RootState) => state.filteredRequests.suggestion

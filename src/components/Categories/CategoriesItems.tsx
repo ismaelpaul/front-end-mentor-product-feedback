@@ -20,7 +20,7 @@ const CategoriesItems = ({
 						className={`w-fit rounded-lg ${
 							selectedCategory === category
 								? 'bg-blue text-white'
-								: 'bg-white-smoke text-blue '
+								: 'bg-white-smoke text-blue hover:bg-lavender-blue '
 						}`}
 					>
 						<li>
