@@ -2,30 +2,23 @@ import { useState } from 'react';
 import ArrowDown from '../SVGComponents/ArrowDown';
 import ArrowUp from '../SVGComponents/ArrowUp';
 import Check from '../SVGComponents/Check';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-	SET_SELECTED_OPTION_FORM,
-	selectOptionForm,
-} from '../../redux/features/productRequests/productRequestsSlice';
 
-interface Options {
+export interface Options {
 	label: string;
 	value: string;
 }
-interface DropdownProps {
+type DropdownProps = {
 	options: Options[];
-}
+	selectedOption: Options;
+	onOptionSelect: (option: Options) => void;
+};
 
-const DropdownFeedback = ({ options }: DropdownProps) => {
+const DropdownFeedback = ({
+	options,
+	selectedOption,
+	onOptionSelect,
+}: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const selectedOption = useSelector(selectOptionForm);
-
-	const dispatch = useDispatch();
-
-	const handleOptionClick = (option: Options) => {
-		dispatch(SET_SELECTED_OPTION_FORM(option));
-		setIsOpen(false);
-	};
 
 	return (
 		<div
@@ -36,13 +29,13 @@ const DropdownFeedback = ({ options }: DropdownProps) => {
 			{isOpen ? <ArrowUp /> : <ArrowDown />}
 
 			{isOpen && (
-				<ul className="bg-white absolute w-full h-max top-14     left-0 divide-y divide-dark-slate-blue/10  rounded-xl shadow-[0_10px_40px_-7px_rgba(55,63,104,0.35)]">
+				<ul className="bg-white absolute w-full top-full left-0 mt-1 z-10 divide-y divide-dark-slate-blue/10 rounded-xl shadow-[0_10px_40px_-7px_rgba(55,63,104,0.35)]">
 					{options.map((option, index) => {
 						return (
 							<div key={index}>
 								<li
 									className="text-light-slate-blue flex items-center justify-between px-6 py-3 "
-									onClick={() => handleOptionClick(option)}
+									onClick={() => onOptionSelect(option)}
 								>
 									{option.label}
 									{selectedOption && selectedOption.label === option.label && (
