@@ -9,7 +9,7 @@ const ArrowUp = ({ className, hasVoted }: ArrowUpProps) => {
 			<path
 				className={className}
 				d="M1 6l4-4 4 4"
-				stroke={hasVoted ? '#FFFFFF' : '#3A4374'}
+				stroke={hasVoted ? '#FFFFFF' : '#4661E6'}
 				strokeWidth="2"
 				fill="none"
 				fillRule="evenodd"
