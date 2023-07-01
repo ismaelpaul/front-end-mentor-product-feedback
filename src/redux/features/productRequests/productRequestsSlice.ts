@@ -5,6 +5,7 @@ import {
 	deleteRequest,
 	getAllProductRequests,
 	getSingleProductRequest,
+	updateRequest,
 	updateUpvotes,
 } from '../../../utils/api';
 import { InitialStateProdRequests } from '../../../interfaces/IInitialState';
@@ -77,6 +78,24 @@ export const addProductRequest = createAsyncThunk(
 	async (data: ProductRequests, thunkAPI) => {
 		try {
 			return await addRequest(data);
+		} catch (error: any) {
+			const message =
+				(error.response && error.response.data && error.response.message) ||
+				error.message ||
+				error.toString();
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
+export const updateProductRequest = createAsyncThunk(
+	'productRequest/update',
+	async (
+		{ id, updatedRequest }: { id: string; updatedRequest: ProductRequests },
+		thunkAPI
+	) => {
+		try {
+			return await updateRequest(id, updatedRequest);
 		} catch (error: any) {
 			const message =
 				(error.response && error.response.data && error.response.message) ||
@@ -218,6 +237,9 @@ const productRequestsSlice = createSlice({
 					state,
 					action: PayloadAction<{ id: string; newComment: Comments }>
 				) => {
+					state.isLoading = false;
+					state.isSuccess = true;
+					state.isError = false;
 					const { id, newComment } = action.payload;
 
 					const productRequest = state.productRequests.find(
@@ -244,6 +266,9 @@ const productRequestsSlice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(updateRequestUpvotes.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.isError = false;
 				const { id, vote } = action.meta.arg;
 				const productRequest = state.productRequests.find(
 					(request) => request._id === id
@@ -251,9 +276,9 @@ const productRequestsSlice = createSlice({
 
 				if (productRequest) {
 					if (vote === 1) {
-						productRequest.upvotes += 1; // Increase upvotes by 1
+						productRequest.upvotes += 1;
 					} else if (vote === -1) {
-						productRequest.upvotes -= 1; // Decrease upvotes by 1
+						productRequest.upvotes -= 1;
 					}
 				}
 			})
@@ -261,6 +286,29 @@ const productRequestsSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
+			})
+			.addCase(updateProductRequest.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(updateProductRequest.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
+			})
+			.addCase(updateProductRequest.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.isError = false;
+				const updatedRequest = action.payload;
+				const { id } = updatedRequest;
+
+				const index = state.productRequests.findIndex(
+					(request) => request._id === id
+				);
+
+				if (index !== -1) {
+					state.productRequests[index] = updatedRequest;
+				}
 			});
 	},
 });
