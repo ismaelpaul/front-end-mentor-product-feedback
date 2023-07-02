@@ -19,6 +19,7 @@ export default {
 			'dark-slate-blue': '#3A4374',
 			'light-slate-blue': '#647196',
 			'light-blue': '#62BCFA',
+			'cornflower-blue': '#8397F8',
 			'lavender-blue': '#CFD7FF',
 			white: '#FFFFFF',
 			'white-smoke': '#F2F4FF',
