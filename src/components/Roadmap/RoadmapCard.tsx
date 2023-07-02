@@ -12,7 +12,8 @@ import {
 } from '../../redux/features/filteredRequests/filteredRequestsSlice';
 
 const RoadmapCard = () => {
-	const cardClass = 'bg-white w-56 h-44 rounded-lg p-6';
+	const cardClass =
+		'bg-white w-56 h-44 rounded-lg p-6 laptop:w-[15.938rem] laptop:h-auto laptop:p-8';
 
 	const { productRequests } = useSelector(
 		(state: RootState) => state.productRequests
@@ -55,7 +56,7 @@ const RoadmapCard = () => {
 						Roadmap
 					</h1>
 					<Link to={'/roadmap'}>
-						<span className="text-blue underline text-subtitleMobile ">
+						<span className="text-blue underline text-subtitleMobile hover:text-cornflower-blue ">
 							View
 						</span>
 					</Link>
