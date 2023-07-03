@@ -77,7 +77,7 @@ const AddComment = ({ cardClass, setComments }: AddCommentsProps) => {
 
 	const onSubmit = handleSubmit(submitData);
 	return (
-		<section className="m-6">
+		<section className="m-6 laptop:mx-[22.188rem] laptop:mt-8">
 			<Card cardClass={cardClass}>
 				<form className="p-6" onSubmit={onSubmit}>
 					<h2 className="text-dark-slate-blue text-title18px font-bold tracking-tight mb-6">

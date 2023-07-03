@@ -21,7 +21,7 @@ const FeedbackDetailPage = () => {
 	return (
 		<>
 			<NavFeedbackDetail />
-			<section className="m-6">
+			<section className="m-6 laptop:mx-[22.188rem] laptop:mt-8">
 				<FeedbackCard singleRequest={singleRequest} />
 			</section>
 

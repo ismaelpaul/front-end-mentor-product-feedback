@@ -33,7 +33,7 @@ const CommentsList = ({ singleRequest, comments }: FeedbackCardPros) => {
 	const totalReplies = repliesCount();
 
 	return (
-		<main className="m-6">
+		<main className="m-6 laptop:mx-[22.188rem] laptop:mt-8">
 			<Card cardClass={cardClass}>
 				<div className="p-6 tablet:px-8">
 					<h1 className="text-dark-slate-blue text-title18px font-bold mb-6">

@@ -6,7 +6,8 @@ import { SET_SORTING_CATEGORY } from '../../redux/features/productRequests/produ
 import { AppDispatch } from '../../redux/store';
 
 const CategoriesCard = () => {
-	const cardClass = 'bg-white w-56 h-44 rounded-lg p-6';
+	const cardClass =
+		'bg-white w-56 h-44 rounded-lg p-6 laptop:w-[15.938rem] laptop:h-auto laptop:p-8';
 
 	const categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
 

@@ -12,7 +12,7 @@ const NavFeedbackDetail = () => {
 
 	const link = '/';
 	return (
-		<header className="flex gap-6 m-6 justify-between items-center">
+		<header className="flex gap-6 m-6 justify-between items-center laptop:mt-20 laptop:mx-[22.188rem]">
 			<GoBackLink
 				goBackClass={goBackClass}
 				arrowClass={arrowClass}
