@@ -70,7 +70,7 @@ const FeedbackForm = ({
 						type="text"
 						defaultValue={watchedValues?.title || ''}
 						className=" bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center
-            rounded-md resize-none w-full h-12 pl-4 leading-10 outline-none focus:outline-blue outline-1"
+            rounded-md resize-none w-full h-12 pl-4 leading-10 outline-none focus:outline-blue outline-1 laptop:text-text15px"
 					/>
 				</div>
 				<div className="text-subtitleMobile mt-6 tablet:text-text14px">
@@ -125,7 +125,7 @@ const FeedbackForm = ({
 						{...register('description')}
 						name="description"
 						className="bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center
-            rounded-md resize-none w-full h-28 pt-4 px-5 leading-5 outline-none focus:outline-blue outline-1"
+            rounded-md resize-none w-full h-28 pt-4 px-5 leading-5 outline-none focus:outline-blue outline-1 laptop:text-text15px"
 						defaultValue={watchedValues?.description || ''}
 					/>
 				</div>
