@@ -8,7 +8,7 @@ const NewFeedbackPage = () => {
 
 	return (
 		<>
-			<nav className="mt-8 mx-6 tablet:mt-14 tablet:mx-[7.125rem]">
+			<nav className="mt-8 mx-6 tablet:mt-14 tablet:mx-[7.125rem] laptop:mt-20 laptop:mx-[28.125rem]">
 				<GoBackLink goBackClass={goBackClass} link={link} />
 			</nav>
 			<CreateFeedback />

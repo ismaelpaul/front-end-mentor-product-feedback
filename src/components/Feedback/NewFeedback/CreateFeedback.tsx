@@ -58,13 +58,13 @@ const CreateFeedback = () => {
 	const onSubmit = handleSubmit(submitData);
 
 	return (
-		<main className="mx-6 tablet:mx-[7.125rem] tablet:mb-10">
+		<main className="mx-6 tablet:mx-[7.125rem] tablet:mb-10 laptop:mx-[28.125rem]">
 			<Card cardClass={cardClass}>
 				<div className="p-6 pt-10">
-					<div className="absolute top-[5.5rem] left-14 tablet:top-28 tablet:left-[8.5rem]">
+					<div className="absolute top-[5.5rem] left-14 tablet:top-28 tablet:left-[8.5rem] laptop:left-12 laptop:top-[8.5rem] laptop:ml-[28.125rem]">
 						<NewFeedback />
 					</div>
-					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier tablet:text-title24px">
+					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier tablet:text-title24px laptop:mb-[4.688rem]">
 						Create new Feedback
 					</h1>
 					<FeedbackForm register={register} onSubmit={onSubmit} />

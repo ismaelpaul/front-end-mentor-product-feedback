@@ -14,10 +14,10 @@ const Planned = () => {
 
 	return (
 		<div className="mt-8 flex-1 w-0">
-			<h1 className="text-dark-slate-blue text-text14px font-bold tracking-tightier mb-1">
+			<h1 className="text-dark-slate-blue text-text14px font-bold tracking-tightier mb-1 laptop:text-title18px">
 				{'Planned' + ' ' + `(${plannedContent.length})`}
 			</h1>
-			<p className="text-light-slate-blue text-text14px mb-6">
+			<p className="text-light-slate-blue text-text14px mb-6 laptop:text-text16px">
 				Ideas prioritized for research
 			</p>
 			<main className={`${pathname === '/roadmap' ? 'mx-0' : 'mx-10'}`}>
