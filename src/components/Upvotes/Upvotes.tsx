@@ -53,7 +53,7 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 			<Button
 				buttonClass={`${buttonClass} ${
 					hasVoted ? 'bg-blue ' : 'bg-white-smoke'
-				} tablet:${pathname === '/roadmap' ? 'flex-row' : 'flex-col'}`}
+				} ${pathname === '/roadmap' ? 'tablet:flex-row' : 'tablet:flex-col'}`}
 				onClick={handleUpvoteClick}
 			>
 				<ArrowUp hasVoted={hasVoted} />
