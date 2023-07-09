@@ -34,9 +34,9 @@ const Menu = () => {
 					{isSidebarOpen ? <CloseMenu /> : <Hamburguer />}
 				</div>
 			</div>
-			<img className="block tablet:hidden" src={bgImageMobile} />
-			<div className="hidden tablet:flex items-center gap-2.5">
-				<img className=" rounded-lg" src={bgImageTablet} />
+			<img className="block w-screen tablet:hidden" src={bgImageMobile} />
+			<div className="hidden tablet:flex items-center gap-2.5 laptop:flex-col laptop:w-[15.938rem] laptop:gap-8">
+				<img className=" rounded-lg w-full h-[8.563rem]" src={bgImageTablet} />
 				<CategoriesCard />
 				<RoadmapCard />
 			</div>
