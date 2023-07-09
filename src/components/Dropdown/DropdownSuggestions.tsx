@@ -27,7 +27,7 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 	};
 
 	return (
-		<div className="flex items-center gap-2 relative">
+		<div className="flex items-center gap-2 relative cursor-pointer">
 			<span
 				className={
 					isOpen
@@ -53,7 +53,7 @@ const Dropdown = ({ options, defaultSelectedOption }: DropdownProps) => {
 							<>
 								<li
 									key={index}
-									className="text-light-slate-blue flex items-center justify-between px-6 py-3 hover:text-purple "
+									className="text-light-slate-blue flex items-center justify-between px-6 py-3 cursor-pointer hover:text-purple "
 									onClick={() => handleOptionClick(option)}
 								>
 									{option.label}
