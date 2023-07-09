@@ -37,7 +37,7 @@ const SuggestionsBar = () => {
 				<Sidebar />
 			</div>
 
-			<div className="text-white text-subtitleMobile font-jost h-14 bg-dark-grey-blue flex items-center justify-between pl-6 pr-6 tablet:h-72px tablet:justify-normal tablet:rounded-lg tablet:gap-38px tablet:pr-2 tablet:mx-10 laptop:mx-0">
+			<div className="text-white text-subtitleMobile font-jost h-14 bg-dark-grey-blue flex items-center justify-between pl-6 pr-6 tablet:h-72px tablet:justify-normal tablet:rounded-lg tablet:gap-38px tablet:pr-4 tablet:mx-10 laptop:mx-0">
 				<div className="hidden tablet:flex items-center">
 					<Suggestions />
 					<span className="text-title18px font-bold m-4">
