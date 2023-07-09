@@ -54,11 +54,11 @@ const RoadmapPage = () => {
 					) : null;
 				})}
 			</main>
-			<div className="hidden tablet:flex tablet:gap-2.5 tablet:mx-[2.438rem]">
+			<main className="hidden tablet:flex tablet:gap-2.5 tablet:mx-[2.438rem] laptop:mx-[10.313rem]">
 				<Planned />
 				<InProgress />
 				<Live />
-			</div>
+			</main>
 		</>
 	);
 };
