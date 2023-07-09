@@ -7,9 +7,15 @@ import CommentCount from '../Comments/CommentsCount';
 
 type FeedbackCardPros = {
 	singleRequest: ProductRequests;
+	hoveringFeedback?: number;
+	index?: number;
 };
 
-const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
+const FeedbackCard = ({
+	singleRequest,
+	hoveringFeedback,
+	index,
+}: FeedbackCardPros) => {
 	const location = useLocation();
 	const { pathname } = location;
 
@@ -49,7 +55,7 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 				}`}
 			>
 				<div
-					className={`hidden tablet:block tablet:${
+					className={`hidden tablet:inline-block tablet:${
 						pathname === '/roadmap' ? 'hidden' : ''
 					}`}
 				>
@@ -78,11 +84,17 @@ const FeedbackCard = ({ singleRequest }: FeedbackCardPros) => {
 								: formattedStatus}
 						</span>
 					</div>
-					<h1 className="text-dark-slate-blue text-subtitleMobile font-bold tracking-tight ">
+					<h1
+						className={`text-subtitleMobile font-bold tracking-tight laptop:text-title18px ${
+							hoveringFeedback === index && pathname !== '/roadmap'
+								? 'text-blue'
+								: 'text-dark-slate-blue'
+						} `}
+					>
 						{singleRequest.title}
 					</h1>
 					<p
-						className={`text-light-slate-blue text-subtitleMobile font-regular mt-2 ${
+						className={`text-light-slate-blue text-subtitleMobile font-regular mt-2 laptop:text-text16px ${
 							pathname === '/roadmap' ? 'mb-6' : ''
 						}`}
 					>
