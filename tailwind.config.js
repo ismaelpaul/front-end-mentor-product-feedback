@@ -35,6 +35,7 @@ export default {
 			title24px: '1.5rem',
 			titleMobile: '0.938rem',
 			subtitleMobile: '0.813rem',
+			text16px: '1rem',
 			text15px: '0.938rem',
 			text14px: '0.875rem',
 			roadmap: '1rem',
