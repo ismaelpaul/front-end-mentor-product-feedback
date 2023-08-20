@@ -58,6 +58,7 @@ const FeedbackCard = ({
 					className={`hidden tablet:inline-block tablet:${
 						pathname === '/roadmap' ? 'hidden' : ''
 					}`}
+					onClick={(e) => e.stopPropagation()}
 				>
 					<Upvotes singleRequest={singleRequest} />
 				</div>
@@ -112,6 +113,7 @@ const FeedbackCard = ({
 						className={`hidden tablet:flex tablet:${
 							pathname !== '/roadmap' ? 'hidden' : 'tablet:flex'
 						} tablet:mt-4`}
+						onClick={(e) => e.stopPropagation()}
 					>
 						<Upvotes singleRequest={singleRequest} />
 						<CommentCount
@@ -130,7 +132,10 @@ const FeedbackCard = ({
 						repliesCount={repliesCount}
 					/>
 				</div>
-				<div className="flex justify-between mt-4 tablet:hidden">
+				<div
+					className="flex justify-between mt-4 tablet:hidden"
+					onClick={(e) => e.stopPropagation()}
+				>
 					<Upvotes singleRequest={singleRequest} />
 					<CommentCount
 						singleRequest={singleRequest}
