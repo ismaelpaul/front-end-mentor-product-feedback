@@ -15,7 +15,7 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 	const [hasVoted, setHasVoted] = useState(false);
 
 	const buttonClass =
-		'flex items-center gap-2.5 px-4 py-2 rounded-lg tablet:px-2 hover:bg-lavender-blue';
+		'flex items-center justify-center gap-2.5 w-[4.313rem] py-2 rounded-lg tablet:w-10 hover:bg-lavender-blue';
 
 	const location = useLocation();
 	const { pathname } = location;
@@ -53,7 +53,11 @@ const Upvotes = ({ singleRequest }: UpvotesProps) => {
 			<Button
 				buttonClass={`${buttonClass} ${
 					hasVoted ? 'bg-blue ' : 'bg-white-smoke'
-				} ${pathname === '/roadmap' ? 'tablet:flex-row' : 'tablet:flex-col'}`}
+				} ${
+					pathname === '/roadmap'
+						? 'tablet:flex-row tablet:w-[4.313rem]'
+						: 'tablet:flex-col'
+				}`}
 				onClick={handleUpvoteClick}
 			>
 				<ArrowUp hasVoted={hasVoted} />
