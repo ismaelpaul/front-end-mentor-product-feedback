@@ -46,7 +46,12 @@ const EditFeedback = () => {
 		status: z.string(),
 	});
 
-	const { register, handleSubmit, watch } = useForm<ProductRequests>({
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm<ProductRequests>({
 		resolver: zodResolver(schema),
 		defaultValues: singleRequest ? singleRequest : {},
 	});
@@ -135,6 +140,7 @@ const EditFeedback = () => {
 						register={register}
 						watchedValues={watchedValues}
 						onSubmit={onSubmit}
+						errors={errors}
 					/>
 					<div className="flex flex-col gap-4 mt-10 tablet:flex-row tablet:justify-between">
 						<Button
