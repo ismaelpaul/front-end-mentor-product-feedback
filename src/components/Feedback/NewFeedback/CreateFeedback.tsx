@@ -29,14 +29,19 @@ const CreateFeedback = () => {
 	const navigate = useNavigate();
 
 	const schema: ZodType<ProductRequests> = z.object({
-		title: z.string().min(3).max(60),
+		title: z.string().max(60).nonempty({ message: "Can't be empty" }),
 		category: z.string(),
-		description: z.string().min(5).max(250),
+		description: z.string().max(250).nonempty({ message: "Can't be empty" }),
 		upvotes: z.number(),
 		status: z.string(),
 	});
 
-	const { register, handleSubmit, reset } = useForm<ProductRequests>({
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<ProductRequests>({
 		resolver: zodResolver(schema),
 		defaultValues: {
 			title: '',
@@ -64,10 +69,14 @@ const CreateFeedback = () => {
 					<div className="absolute top-[5.5rem] left-14 tablet:top-28 tablet:left-[8.5rem] laptop:left-12 laptop:top-[8.5rem] laptop:ml-[28.125rem]">
 						<NewFeedback />
 					</div>
-					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier tablet:text-title24px laptop:mb-[4.688rem]">
+					<h1 className="text-dark-slate-blue text-title18px font-bold tracking-tightier mb-6 tablet:text-title24px laptop:mb-[4.688rem]">
 						Create new Feedback
 					</h1>
-					<FeedbackForm register={register} onSubmit={onSubmit} />
+					<FeedbackForm
+						register={register}
+						onSubmit={onSubmit}
+						errors={errors}
+					/>
 					<div className="flex flex-col gap-4 mt-10 tablet:flex-row-reverse">
 						<Button
 							type={'submit'}

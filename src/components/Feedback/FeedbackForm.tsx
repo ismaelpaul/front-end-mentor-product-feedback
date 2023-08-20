@@ -17,12 +17,14 @@ type FeedbackFormProps = {
 		e?: BaseSyntheticEvent<object, any, any> | undefined
 	) => Promise<void>;
 	watchedValues?: ProductRequests;
+	errors: Record<string, any>;
 };
 
 const FeedbackForm = ({
 	register,
 	onSubmit,
 	watchedValues,
+	errors,
 }: FeedbackFormProps) => {
 	const categoryOptions = [
 		{ label: 'Feature', value: 'feature' },
@@ -38,7 +40,7 @@ const FeedbackForm = ({
 		{ label: 'In-progress', value: 'in-progress' },
 		{ label: 'Live', value: 'live' },
 	];
-
+	const errorClass = 'text-red text-12px mt-1 inline-block';
 	const dispatch = useDispatch();
 
 	const selectedCategory = useSelector(selectedCategoryForm);
@@ -69,9 +71,14 @@ const FeedbackForm = ({
 						name="title"
 						type="text"
 						defaultValue={watchedValues?.title || ''}
-						className=" bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center
-            rounded-md resize-none w-full h-12 pl-4 leading-10 outline-none focus:outline-blue outline-1 laptop:text-text15px"
+						className={` bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center cursor-pointer
+            rounded-md resize-none w-full h-12 pl-4 leading-10 ${
+							errors.title ? 'focus:outline-red' : 'focus:outline-blue'
+						} outline-1 laptop:text-text15px`}
 					/>
+					{errors.title && (
+						<span className={errorClass}>{errors.title.message}</span>
+					)}
 				</div>
 				<div className="text-subtitleMobile mt-6 tablet:text-text14px">
 					<label className="text-dark-slate-blue font-bold tracking-tight mb-1">
@@ -124,10 +131,17 @@ const FeedbackForm = ({
 					<textarea
 						{...register('description')}
 						name="description"
-						className="bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center
-            rounded-md resize-none w-full h-28 pt-4 px-5 leading-5 outline-none focus:outline-blue outline-1 laptop:text-text15px"
+						className={`bg-white-ghost text-dark-slate-blue text-subtitleMobile content-center cursor-pointer
+            rounded-md resize-none w-full h-28 pt-4 px-5 leading-5 ${
+							errors.description
+								? 'focus:outline-red border border-solid border-red'
+								: 'focus:outline-blue'
+						} outline-1 laptop:text-text15px`}
 						defaultValue={watchedValues?.description || ''}
 					/>
+					{errors.description && (
+						<span className={errorClass}>{errors.description.message}</span>
+					)}
 				</div>
 			</form>
 		</div>

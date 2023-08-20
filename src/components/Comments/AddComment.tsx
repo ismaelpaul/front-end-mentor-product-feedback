@@ -36,9 +36,8 @@ const AddComment = ({ cardClass, setComments }: AddCommentsProps) => {
 	const commentSchema = z.object({
 		content: z
 			.string()
-			.min(2, { message: "Can't be empty or less than 2 characteres" })
 			.max(250, { message: 'Comment content cannot exceed 250 characters' })
-			.nonempty({ message: 'Can\t be empty' }),
+			.nonempty({ message: "Can't be empty" }),
 		user: userSchema,
 	});
 
@@ -87,7 +86,9 @@ const AddComment = ({ cardClass, setComments }: AddCommentsProps) => {
 						{...register('content')}
 						maxLength={250}
 						placeholder="Type your comment here"
-						className="bg-white-ghost text-regent-grey text-subtitleMobile rounded-md resize-none p-6 w-full h-32 outline-none focus:outline-blue outline-1 tablet:text-text15px"
+						className={`bg-white-ghost text-regent-grey text-subtitleMobile rounded-md resize-none p-6 w-full h-32 ${
+							errors.content ? 'focus:outline-red' : 'focus:outline-blue'
+						} outline-1 tablet:text-text15px`}
 						onChange={(e) => setcharacterCount(e.target.value.length)}
 					></textarea>
 					{errors.content && (
