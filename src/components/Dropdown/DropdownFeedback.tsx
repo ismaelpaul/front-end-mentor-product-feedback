@@ -23,7 +23,7 @@ const DropdownFeedback = ({
 	return (
 		<div
 			onClick={() => setIsOpen(!isOpen)}
-			className="flex items-center justify-between bg-white-ghost rounded-lg h-12 px-4 relative"
+			className="flex items-center justify-between bg-white-ghost rounded-lg h-12 px-4 relative cursor-pointer"
 		>
 			<span className="text-dark-slate-blue">{selectedOption.label}</span>
 			{isOpen ? <ArrowUp /> : <ArrowDown />}
